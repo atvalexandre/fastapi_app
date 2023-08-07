@@ -15,10 +15,13 @@ jobs:
           python-version: '3.11.1'
 
       - name: Instalar Poetry
+        run: pip install --upgrade pip
+
+      - name: Instalar Poetry
         run: pip install poetry
 
       - name: Instalar Pydantic email
-        run: pip install pydantic[email]      
+        run: pip install 'pydantic[email]'      
 
       - name: Instalar dependências do projeto
         run: poetry install

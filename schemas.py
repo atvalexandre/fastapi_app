@@ -1,4 +1,6 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, ConfigDict, EmailStr
+
+from fast_zero.models import TodoState
 
 
 class UserSchema(BaseModel):
@@ -11,10 +13,7 @@ class UserPublic(BaseModel):
     id: int
     username: str
     email: EmailStr
-
-
-class UserDB(UserSchema):
-    id: int
+    model_config = ConfigDict(from_attributes=True)
 
 
 class UserList(BaseModel):
@@ -23,3 +22,32 @@ class UserList(BaseModel):
 
 class Message(BaseModel):
     detail: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: str | None = None
+
+
+class TodoSchema(BaseModel):
+    title: str
+    description: str
+    state: TodoState
+
+
+class TodoPublic(TodoSchema):
+    id: int
+
+
+class ListTodos(BaseModel):
+    todos: list[TodoPublic]
+
+
+class TodoUpdate(BaseModel):
+    title: str | None = None
+    description: str | None = None
+    completed: str | None = None

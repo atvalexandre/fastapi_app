@@ -19,9 +19,6 @@ jobs:
 
       - name: Instalar Poetry
         run: pip install poetry
-
-      - name: Corrigindo consistencia do poetry
-        run: poetry lock [--no-update]
       
       - name: Instalar Pydantic email
         run: pip install 'pydantic[email]'      

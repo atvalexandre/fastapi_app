@@ -17,6 +17,9 @@ jobs:
       - name: Instalar Poetry
         run: pip install poetry
 
+      - name: Instalar Pydantic email
+        run: pip install pydantic[email]      
+
       - name: Instalar dependências do projeto
         run: poetry install
 

@@ -20,6 +20,9 @@ jobs:
       - name: Instalar dependências do projeto
         run: poetry install
 
+      - name: Conferindo arquivos
+        run: ls -la
+
       - name: Rodar os testes
         run: poetry run task test #--cov-report=xml
 
